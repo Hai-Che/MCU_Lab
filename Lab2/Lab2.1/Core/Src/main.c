@@ -317,24 +317,22 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-int count = 100;
+int count = 0;
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-	count--;
-	if (count<0) {
-		count=100;
-		HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
-	}
-	if(count>=50) {
+	if (count==50) {
 		HAL_GPIO_WritePin(SEG1_GPIO_Port, SEG1_Pin, RESET);
 		HAL_GPIO_WritePin(SEG2_GPIO_Port, SEG2_Pin, SET);
 		display7SEG(1);
 	}
-	if (count<50) {
+	if(count==100) {
+		HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
 		HAL_GPIO_WritePin(SEG1_GPIO_Port, SEG1_Pin, SET);
 		HAL_GPIO_WritePin(SEG2_GPIO_Port, SEG2_Pin, RESET);
 		display7SEG(2);
+		count=-1;
 	}
+	count++;
 }
 /* USER CODE END 4 */
 
