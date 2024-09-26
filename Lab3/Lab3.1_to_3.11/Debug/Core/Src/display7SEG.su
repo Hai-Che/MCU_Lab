@@ -1,0 +1,4 @@
+display7SEG.c:15:6:display7SEG	16	static
+display7SEG.c:111:6:update7SEG	16	static
+display7SEG.c:147:6:update7SEGBuffer	4	static
+display7SEG.c:161:6:display	8	static
